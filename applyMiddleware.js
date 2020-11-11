@@ -24,7 +24,7 @@ export default function applyMiddleware(middlewares) {
   
       // 将dispatch放入中间件的链式调用中去 返回一个新的dispatch
       // 这要求compose(chain)返回一个形如 dispatch => (...arags) => {}
-      // 所以我们反推回去middleware的写法需要形如middlewareAPI => dispatch => args => {// do something}
+      // 所以我们反推回去middleware的正确写法需要形如middlewareAPI => dispatch => args => {// do something}
       dispatch = compose(chain)(store.dispatch)
   
       // 返回一个store，注意dispatch已经是新的dispatch了
