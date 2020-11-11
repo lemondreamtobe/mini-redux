@@ -634,8 +634,7 @@ function applyMiddleware(middlewares) {
       dispatch: args => dispatch(args)
     }
 
-    // 注入每一个中间件 并且返回函数数组 注意 这就要求中间件的写法
-    // 也必须形同middlewareAPI => args => {// do something}
+    // 注入每一个中间件 并且返回函数数组 注意 这就要求中间件的写法必须middlewareAPI => args => {// do something}
     const chain = middlewares.map(middleware => middleware(middlewareAPI))
 
     // 将dispatch放入中间件的链式调用中去 返回一个新的dispatch
@@ -686,3 +685,12 @@ changeName();
 increaseAge();
 updateBasketBall();
 ```
+看看效果吧
+![effect](./images/middle.png)
+
+# 总结
+行文至此，已经将redux解析完毕。通过从设计思想 假设实现 逐渐优化和改进。从每一个细节处感受Redux的设计。最后我们再来看看官网Redux的结构组织是怎样的。
+![effect](./images/redux.png)
+
+可以看出来别无二致，但是官网Redux还是有诸多的细节，比如参数检测等等 本文就没有一一分析了，相比网上许多的源码解析文章话不多说先一通解析，笔者觉得知其然更要知其所以然。如果我的文章有帮助到你，别忘记点个赞好吗？
+PS(本文所有代码可在github仓库[mini-redux](https://github.com/lemondreamtobe/mini-redux)中找到)，别忘了点个星哦~
